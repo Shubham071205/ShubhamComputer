@@ -1,0 +1,807 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shubham Computers | Refurbished Laptops in Ahmedabad</title>
+
+    <meta name="description"
+          content="Buy quality refurbished laptops in Ahmedabad from Shubham Computers. Tested, cleaned and warranty available.">
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="container nav-container">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">💻</span>
+            <span>
+                <strong>Shubham</strong>
+                <small>Computers</small>
+            </span>
+        </a>
+
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="/laptops/">Laptops</a>
+            <a href="/brands/">Brands</a>
+            <a href="/services/">Services</a>
+            <a href="/sell-laptop/">Sell/Exchange</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="search-btn" onclick="toggleSearch()">🔍</button>
+            <a href="/contact/" class="nav-contact">Contact</a>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+
+    </div>
+
+    <div class="search-box" id="searchBox">
+        <div class="container">
+            <input type="text" placeholder="Search laptops..." id="searchInput">
+        </div>
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+
+    <div class="container hero-container">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                ✨ Trusted Refurbished Laptop Store
+            </span>
+
+            <h1>
+                Quality Refurbished
+                <span>Laptops</span>
+                at Affordable Prices
+            </h1>
+
+            <p>
+                Tested, cleaned and ready to use.
+                Get reliable refurbished laptops with warranty
+                and expert support from Shubham Computers.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/laptops/" class="btn btn-primary">
+                    Shop Laptops →
+                </a>
+
+                <a href="https://wa.me/917572858187"
+                   target="_blank"
+                   class="btn btn-whatsapp">
+                    💬 WhatsApp Us
+                </a>
+            </div>
+
+            <div class="hero-benefits">
+
+                <div class="benefit">
+                    <span>✓</span>
+                    <div>
+                        <strong>Tested & Verified</strong>
+                        <small>Quality checked</small>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span>🛡</span>
+                    <div>
+                        <strong>Warranty</strong>
+                        <small>Peace of mind</small>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span>₹</span>
+                    <div>
+                        <strong>Best Prices</strong>
+                        <small>Budget friendly</small>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span>★</span>
+                    <div>
+                        <strong>Expert Support</strong>
+                        <small>We're here to help</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Laptop Visual -->
+        <div class="hero-laptop">
+
+            <div class="laptop-glow"></div>
+
+            <div class="laptop">
+                <div class="laptop-screen">
+
+                    <div class="screen-top">
+                        <span>SHUBHAM</span>
+                        <span>COMPUTERS</span>
+                    </div>
+
+                    <div class="screen-content">
+                        <div class="screen-logo">💻</div>
+                        <h3>REFURBISHED</h3>
+                        <p>QUALITY LAPTOPS</p>
+                    </div>
+
+                </div>
+
+                <div class="laptop-base">
+                    <div class="keyboard"></div>
+                    <div class="touchpad"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BRANDS ================= -->
+<section class="brands-section">
+
+    <div class="container">
+
+        <div class="section-heading center">
+            <span class="section-label">TOP BRANDS</span>
+            <h2>Shop by Brand</h2>
+            <p>Choose from trusted laptop brands</p>
+        </div>
+
+        <div class="brands-grid">
+
+            <a href="/brands/dell/" class="brand-card">
+                <strong>DELL</strong>
+                <span>View Laptops →</span>
+            </a>
+
+            <a href="/brands/hp/" class="brand-card">
+                <strong>HP</strong>
+                <span>View Laptops →</span>
+            </a>
+
+            <a href="/brands/lenovo/" class="brand-card">
+                <strong>LENOVO</strong>
+                <span>View Laptops →</span>
+            </a>
+
+            <a href="/brands/acer/" class="brand-card">
+                <strong>ACER</strong>
+                <span>View Laptops →</span>
+            </a>
+
+            <a href="/brands/asus/" class="brand-card">
+                <strong>ASUS</strong>
+                <span>View Laptops →</span>
+            </a>
+
+            <a href="/brands/apple/" class="brand-card">
+                <strong>APPLE</strong>
+                <span>View Laptops →</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURED LAPTOPS ================= -->
+<section class="products-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <span class="section-label">FEATURED PRODUCTS</span>
+                <h2>Popular Refurbished Laptops</h2>
+                <p>Quality laptops at prices you'll love.</p>
+            </div>
+
+            <a href="/laptops/" class="view-all">
+                View All Laptops →
+            </a>
+
+        </div>
+
+
+        <div class="products-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <span class="condition">Refurbished</span>
+                    <div class="product-placeholder">💻</div>
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-brand">DELL</span>
+
+                    <h3>Dell Latitude 5490</h3>
+
+                    <p class="specs">
+                        Intel Core i5 • 8GB RAM • 256GB SSD
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div>
+                            <span class="price">₹18,999</span>
+                            <span class="old-price">₹28,999</span>
+                        </div>
+
+                        <a href="/laptops/" class="product-btn">
+                            View
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <span class="condition">Refurbished</span>
+                    <div class="product-placeholder">💻</div>
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-brand">HP</span>
+
+                    <h3>HP EliteBook 840 G5</h3>
+
+                    <p class="specs">
+                        Intel Core i5 • 8GB RAM • 256GB SSD
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div>
+                            <span class="price">₹22,999</span>
+                            <span class="old-price">₹32,999</span>
+                        </div>
+
+                        <a href="/laptops/" class="product-btn">
+                            View
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <span class="condition">Refurbished</span>
+                    <div class="product-placeholder">💻</div>
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-brand">LENOVO</span>
+
+                    <h3>Lenovo ThinkPad T480</h3>
+
+                    <p class="specs">
+                        Intel Core i5 • 8GB RAM • 512GB SSD
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div>
+                            <span class="price">₹25,999</span>
+                            <span class="old-price">₹36,999</span>
+                        </div>
+
+                        <a href="/laptops/" class="product-btn">
+                            View
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <span class="condition">Refurbished</span>
+                    <div class="product-placeholder">💻</div>
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-brand">DELL</span>
+
+                    <h3>Dell Latitude 5520</h3>
+
+                    <p class="specs">
+                        Intel Core i5 • 16GB RAM • 512GB SSD
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div>
+                            <span class="price">₹21,999</span>
+                            <span class="old-price">₹34,999</span>
+                        </div>
+
+                        <a href="/laptops/" class="product-btn">
+                            View
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-label">WHY CHOOSE US</span>
+
+            <h2>Why Shubham Computers?</h2>
+
+            <p>
+                We make buying refurbished laptops simple,
+                safe and affordable.
+            </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <div class="why-icon">✓</div>
+                <h3>Quality Tested</h3>
+                <p>
+                    Every laptop is thoroughly tested
+                    before being sold.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">🛡</div>
+                <h3>Warranty Included</h3>
+                <p>
+                    Get warranty support with selected
+                    refurbished laptops.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">₹</div>
+                <h3>Affordable Prices</h3>
+                <p>
+                    Save money compared to buying
+                    brand-new laptops.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">🔧</div>
+                <h3>Expert Support</h3>
+                <p>
+                    Get help choosing the right laptop
+                    for your needs.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+<section class="services-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <span class="section-label">OUR SERVICES</span>
+
+                <h2>More Than Just Laptops</h2>
+
+                <p>
+                    Complete computer solutions under one roof.
+                </p>
+            </div>
+
+            <a href="/services/" class="view-all">
+                All Services →
+            </a>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <a href="/services/" class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Laptop Sales</h3>
+                <p>
+                    Quality refurbished laptops
+                    at affordable prices.
+                </p>
+                <span>Learn More →</span>
+            </a>
+
+            <a href="/services/" class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Laptop Repair</h3>
+                <p>
+                    Professional laptop repair
+                    and maintenance services.
+                </p>
+                <span>Learn More →</span>
+            </a>
+
+            <a href="/sell-laptop/" class="service-card">
+                <div class="service-icon">🔄</div>
+                <h3>Sell / Exchange</h3>
+                <p>
+                    Sell your old laptop or
+                    exchange it for another.
+                </p>
+                <span>Learn More →</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REFURBISHED EXPLAINED ================= -->
+<section class="refurbished-section">
+
+    <div class="container refurbished-container">
+
+        <div class="refurbished-content">
+
+            <span class="section-label">
+                WHAT IS REFURBISHED?
+            </span>
+
+            <h2>
+                Smart Buying Starts With
+                <span>Refurbished</span>
+            </h2>
+
+            <p>
+                A refurbished laptop is a pre-owned device that
+                has been inspected, tested, cleaned and prepared
+                for reliable everyday use.
+            </p>
+
+            <div class="refurbished-points">
+
+                <div>
+                    <span>✓</span>
+                    <strong>Professionally Tested</strong>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <strong>Cleaned & Checked</strong>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <strong>Value for Money</strong>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <strong>Warranty Available</strong>
+                </div>
+
+            </div>
+
+            <a href="/refurbished-laptops/" class="btn btn-primary">
+                Learn More →
+            </a>
+
+        </div>
+
+
+        <div class="refurbished-box">
+
+            <div class="big-check">✓</div>
+
+            <h3>TESTED</h3>
+
+            <p>
+                Every laptop goes through
+                quality checks before delivery.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews-section">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-label">CUSTOMER REVIEWS</span>
+
+            <h2>What Our Customers Say</h2>
+
+            <p>
+                Your satisfaction is our priority.
+            </p>
+
+        </div>
+
+
+        <div class="reviews-grid">
+
+            <div class="review-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Good quality laptop at a reasonable price.
+                    The laptop was clean and working perfectly."
+                </p>
+
+                <div class="review-user">
+                    <div class="avatar">R</div>
+                    <div>
+                        <strong>Rahul</strong>
+                        <span>Ahmedabad</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Very helpful service. They explained
+                    everything clearly before I purchased."
+                </p>
+
+                <div class="review-user">
+                    <div class="avatar">P</div>
+                    <div>
+                        <strong>Priya</strong>
+                        <span>Ahmedabad</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Bought a refurbished Dell laptop.
+                    Excellent value for the money."
+                </p>
+
+                <div class="review-user">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong>Akash</strong>
+                        <span>Ahmedabad</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+<section class="cta-section">
+
+    <div class="container cta-container">
+
+        <div>
+            <span class="section-label">NEED HELP?</span>
+
+            <h2>Looking for the Right Laptop?</h2>
+
+            <p>
+                Tell us your budget and requirements.
+                We'll help you find the right refurbished laptop.
+            </p>
+        </div>
+
+        <div class="cta-buttons">
+
+            <a href="/contact/" class="btn btn-light">
+                Contact Us →
+            </a>
+
+            <a href="https://wa.me/917572858187"
+               target="_blank"
+               class="btn btn-whatsapp">
+                💬 WhatsApp Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="/" class="logo footer-logo">
+                <span class="logo-icon">💻</span>
+                <span>
+                    <strong>Shubham</strong>
+                    <small>Computers</small>
+                </span>
+            </a>
+
+            <p>
+                Quality refurbished laptops at affordable prices.
+                Tested, reliable and backed by support.
+            </p>
+
+            <p>
+                📍 Ahmedabad, Gujarat
+            </p>
+
+            <p>
+                📞 7572858187
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="/">Home</a>
+            <a href="/laptops/">Laptops</a>
+            <a href="/brands/">Brands</a>
+            <a href="/services/">Services</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Customer Support</h3>
+
+            <a href="/sell-laptop/">Sell / Exchange</a>
+            <a href="/warranty/">Warranty</a>
+            <a href="/returns/">Return Policy</a>
+            <a href="/faq/">FAQ</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Popular Brands</h3>
+
+            <a href="/brands/dell/">Dell</a>
+            <a href="/brands/hp/">HP</a>
+            <a href="/brands/lenovo/">Lenovo</a>
+            <a href="/brands/acer/">Acer</a>
+            <a href="/brands/asus/">ASUS</a>
+            <a href="/brands/apple/">Apple</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Shubham Computers. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+<a href="https://wa.me/917572858187"
+   target="_blank"
+   class="whatsapp-float"
+   aria-label="Chat on WhatsApp">
+    💬
+</a>
+
+
+<script src="{% static 'js/home.js' %}"></script>
+
+</body>
+</html>

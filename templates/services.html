@@ -1,0 +1,1405 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Computer & Laptop Services | Shubham Computers</title>
+
+    <meta name="description"
+          content="Shubham Computers provides laptop repair, upgrades, software installation, cleaning, maintenance and computer services in Ahmedabad.">
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <style>
+
+        /* =========================================
+           SERVICES PAGE
+        ========================================= */
+
+        .services-page {
+            background: #f6f8fc;
+            min-height: 70vh;
+            padding: 70px 0 90px;
+        }
+
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+
+        .services-page-header {
+            max-width: 780px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .services-page-header h1 {
+            color: #081a3a;
+            font-size: 44px;
+            line-height: 1.2;
+            margin: 12px 0 15px;
+        }
+
+        .services-page-header h1 span {
+            color: #1d4ed8;
+        }
+
+        .services-page-header p {
+            color: #667085;
+            font-size: 17px;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+
+        /* =========================================
+           SERVICES GRID
+        ========================================= */
+
+        .services-main-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+
+        /* =========================================
+           SERVICE CARD
+        ========================================= */
+
+        .professional-service-card {
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 18px;
+            padding: 30px;
+            min-height: 270px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(15, 35, 70, 0.06);
+        }
+
+        .professional-service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(15, 35, 70, 0.13);
+            border-color: #d1daf0;
+        }
+
+
+        /* SERVICE ICON */
+
+        .service-icon-box {
+            width: 65px;
+            height: 65px;
+            border-radius: 14px;
+            background: #eef4ff;
+            color: #1d4ed8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+
+        /* SERVICE CONTENT */
+
+        .professional-service-card h2 {
+            color: #172033;
+            font-size: 21px;
+            margin: 0 0 10px;
+        }
+
+        .professional-service-card p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+
+        /* SERVICE FEATURES */
+
+        .service-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0 0;
+        }
+
+        .service-feature-list li {
+            color: #475467;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-feature-list li span {
+            color: #16a34a;
+            font-weight: 800;
+        }
+
+
+        /* =========================================
+           MAIN SERVICE SECTION
+        ========================================= */
+
+        .services-highlight {
+            margin-top: 75px;
+            background: #081a3a;
+            border-radius: 22px;
+            padding: 55px;
+            color: white;
+        }
+
+        .services-highlight-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .services-highlight .section-label {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .services-highlight h2 {
+            font-size: 34px;
+            line-height: 1.25;
+            margin: 0 0 16px;
+        }
+
+        .services-highlight h2 span {
+            color: #60a5fa;
+        }
+
+        .services-highlight p {
+            color: #cbd5e1;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+
+        /* HIGHLIGHT POINTS */
+
+        .highlight-points {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .highlight-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .highlight-point span {
+            width: 27px;
+            height: 27px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+        }
+
+
+        /* SERVICE VISUAL */
+
+        .services-highlight-visual {
+            background: #102957;
+            border-radius: 18px;
+            padding: 45px 30px;
+            text-align: center;
+        }
+
+        .service-big-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        .services-highlight-visual h3 {
+            font-size: 23px;
+            margin: 0 0 10px;
+        }
+
+        .services-highlight-visual p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           PROCESS SECTION
+        ========================================= */
+
+        .service-process {
+            margin-top: 75px;
+        }
+
+        .service-process-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .service-process-heading h2 {
+            color: #081a3a;
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+        .service-process-heading p {
+            color: #667085;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-card {
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .process-number {
+            width: 48px;
+            height: 48px;
+            background: #1d4ed8;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .process-card h3 {
+            color: #172033;
+            font-size: 17px;
+            margin: 0 0 8px;
+        }
+
+        .process-card p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================= */
+
+        .services-cta {
+            margin-top: 70px;
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 20px;
+            padding: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .services-cta h2 {
+            color: #081a3a;
+            font-size: 28px;
+            margin: 0 0 10px;
+        }
+
+        .services-cta p {
+            color: #667085;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .services-cta-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .services-cta-button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .services-contact {
+            background: #1d4ed8;
+            color: #ffffff;
+        }
+
+        .services-whatsapp {
+            background: #16a34a;
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .services-main-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-highlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .services-page {
+                padding: 50px 0 65px;
+            }
+
+            .services-page-header h1 {
+                font-size: 32px;
+            }
+
+            .services-page-header p {
+                font-size: 15px;
+            }
+
+            .services-main-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .professional-service-card {
+                min-height: auto;
+                padding: 25px;
+            }
+
+            .services-highlight {
+                padding: 32px 22px;
+                margin-top: 55px;
+            }
+
+            .services-highlight h2 {
+                font-size: 27px;
+            }
+
+            .highlight-points {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-cta {
+                padding: 30px 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .services-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .services-cta-button {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <div class="container nav-container">
+
+        <a href="/" class="logo">
+
+            <span class="logo-icon">
+                💻
+            </span>
+
+            <span>
+                <strong>Shubham</strong>
+                <small>Computers</small>
+            </span>
+
+        </a>
+
+
+        <nav class="navbar">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/laptops/">
+                Laptops
+            </a>
+
+            <a href="/brands/">
+                Brands
+            </a>
+
+            <a href="/services/" class="active">
+                Services
+            </a>
+
+            <a href="/sell-laptop/">
+                Sell/Exchange
+            </a>
+
+            <a href="/about/">
+                About Us
+            </a>
+
+            <a href="/contact/">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="/contact/"
+                class="nav-contact">
+
+                Contact
+
+            </a>
+
+            <button
+                class="menu-btn"
+                onclick="toggleMenu()"
+                aria-label="Menu">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="services-page">
+
+    <div class="container">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="services-page-header">
+
+            <span class="section-label">
+                OUR SERVICES
+            </span>
+
+            <h1>
+                Complete
+                <span>Computer Solutions</span>
+            </h1>
+
+            <p>
+                From laptop sales and repairs to upgrades,
+                software installation and maintenance,
+                Shubham Computers provides practical computer
+                solutions for everyday needs.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             SERVICES
+        ====================================== -->
+
+        <div class="services-main-grid">
+
+
+            <!-- LAPTOP SALES -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    💻
+                </div>
+
+                <h2>
+                    Laptop Sales
+                </h2>
+
+                <p>
+                    Buy quality refurbished and used laptops
+                    from trusted brands at affordable prices.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        Refurbished laptops
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Multiple brands
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Tested before sale
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- LAPTOP REPAIR -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    🔧
+                </div>
+
+                <h2>
+                    Laptop Repair
+                </h2>
+
+                <p>
+                    Professional laptop troubleshooting and
+                    repair for common hardware and software issues.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        Hardware diagnosis
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Software troubleshooting
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Performance issues
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- RAM / SSD -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    ⚡
+                </div>
+
+                <h2>
+                    RAM & SSD Upgrade
+                </h2>
+
+                <p>
+                    Improve laptop speed and storage with
+                    suitable RAM and SSD upgrades.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        RAM upgrade
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        SSD installation
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Storage upgrade
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- SOFTWARE -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    🖥️
+                </div>
+
+                <h2>
+                    Software Installation
+                </h2>
+
+                <p>
+                    Operating system and software installation
+                    for your laptop or desktop computer.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        Windows installation
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Driver setup
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Basic software setup
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CLEANING -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    🧹
+                </div>
+
+                <h2>
+                    Laptop Cleaning
+                </h2>
+
+                <p>
+                    Internal and external laptop cleaning to
+                    help maintain your device properly.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        Dust cleaning
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Keyboard cleaning
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Basic maintenance
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- DATA -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    💾
+                </div>
+
+                <h2>
+                    Data Transfer
+                </h2>
+
+                <p>
+                    Assistance with transferring personal files
+                    between storage devices and computers.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        File transfer
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Backup assistance
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Storage migration
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- SELL EXCHANGE -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    🔄
+                </div>
+
+                <h2>
+                    Sell / Exchange
+                </h2>
+
+                <p>
+                    Looking to upgrade your laptop? Contact us
+                    to discuss selling or exchanging your old device.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        Laptop evaluation
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Sell old laptop
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Exchange options
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONSULTATION -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    💡
+                </div>
+
+                <h2>
+                    Laptop Consultation
+                </h2>
+
+                <p>
+                    Not sure which laptop is right for you?
+                    Tell us your requirements and budget.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        Budget guidance
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Specification advice
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Requirement matching
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- MAINTENANCE -->
+
+            <div class="professional-service-card">
+
+                <div class="service-icon-box">
+                    🛠️
+                </div>
+
+                <h2>
+                    Computer Maintenance
+                </h2>
+
+                <p>
+                    General maintenance and troubleshooting
+                    support for laptops and computers.
+                </p>
+
+                <ul class="service-feature-list">
+
+                    <li>
+                        <span>✓</span>
+                        System checking
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Basic troubleshooting
+                    </li>
+
+                    <li>
+                        <span>✓</span>
+                        Performance checks
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             HIGHLIGHT
+        ====================================== -->
+
+        <section class="services-highlight">
+
+            <div class="services-highlight-grid">
+
+
+                <div>
+
+                    <span class="section-label">
+                        PROFESSIONAL SUPPORT
+                    </span>
+
+                    <h2>
+                        Your Computer.
+                        <span>Our Expertise.</span>
+                    </h2>
+
+                    <p>
+                        Whether your laptop needs a repair,
+                        upgrade, cleaning or software setup,
+                        our goal is to provide clear information
+                        and practical solutions.
+                    </p>
+
+
+                    <div class="highlight-points">
+
+                        <div class="highlight-point">
+                            <span>✓</span>
+                            Clear Communication
+                        </div>
+
+                        <div class="highlight-point">
+                            <span>✓</span>
+                            Quality Service
+                        </div>
+
+                        <div class="highlight-point">
+                            <span>✓</span>
+                            Practical Solutions
+                        </div>
+
+                        <div class="highlight-point">
+                            <span>✓</span>
+                            Customer Support
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="services-highlight-visual">
+
+                    <div class="service-big-icon">
+                        🔧
+                    </div>
+
+                    <h3>
+                        Need Computer Help?
+                    </h3>
+
+                    <p>
+                        Contact Shubham Computers and tell us
+                        about your laptop or computer issue.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PROCESS
+        ====================================== -->
+
+        <section class="service-process">
+
+            <div class="service-process-heading">
+
+                <span class="section-label">
+                    HOW IT WORKS
+                </span>
+
+                <h2>
+                    Simple Service Process
+                </h2>
+
+                <p>
+                    We keep the service process simple and
+                    straightforward.
+                </p>
+
+            </div>
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Contact Us
+                    </h3>
+
+                    <p>
+                        Tell us about your laptop,
+                        computer or service requirement.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Check & Diagnose
+                    </h3>
+
+                    <p>
+                        We understand the issue and
+                        check the device where required.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Service
+                    </h3>
+
+                    <p>
+                        The required repair, upgrade or
+                        service is carried out.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Ready
+                    </h3>
+
+                    <p>
+                        Your device is checked again
+                        before completion.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CTA
+        ====================================== -->
+
+        <section class="services-cta">
+
+            <div>
+
+                <h2>
+                    Need a Laptop or Computer Service?
+                </h2>
+
+                <p>
+                    Contact us with your requirement and
+                    we'll help you with the next step.
+                </p>
+
+            </div>
+
+
+            <div class="services-cta-buttons">
+
+                <a
+                    href="/contact/"
+                    class="services-cta-button services-contact">
+
+                    Contact Us →
+
+                </a>
+
+                <a
+                    href="https://wa.me/917572858187"
+                    target="_blank"
+                    class="services-cta-button services-whatsapp">
+
+                    💬 WhatsApp Us
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+
+        <div class="footer-about">
+
+            <a href="/" class="logo footer-logo">
+
+                <span class="logo-icon">
+                    💻
+                </span>
+
+                <span>
+                    <strong>Shubham</strong>
+                    <small>Computers</small>
+                </span>
+
+            </a>
+
+            <p>
+                Quality refurbished laptops at affordable prices.
+                Tested, reliable and backed by support.
+            </p>
+
+            <p>
+                📍 Ahmedabad, Gujarat
+            </p>
+
+            <p>
+                📞 7572858187
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/laptops/">
+                Laptops
+            </a>
+
+            <a href="/brands/">
+                Brands
+            </a>
+
+            <a href="/services/">
+                Services
+            </a>
+
+            <a href="/about/">
+                About Us
+            </a>
+
+            <a href="/contact/">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Customer Support
+            </h3>
+
+            <a href="/sell-laptop/">
+                Sell / Exchange
+            </a>
+
+            <a href="/warranty/">
+                Warranty
+            </a>
+
+            <a href="/returns/">
+                Return Policy
+            </a>
+
+            <a href="/faq/">
+                FAQ
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Popular Brands
+            </h3>
+
+            <a href="/laptops/?search=Dell">
+                Dell
+            </a>
+
+            <a href="/laptops/?search=HP">
+                HP
+            </a>
+
+            <a href="/laptops/?search=Lenovo">
+                Lenovo
+            </a>
+
+            <a href="/laptops/?search=Acer">
+                Acer
+            </a>
+
+            <a href="/laptops/?search=ASUS">
+                ASUS
+            </a>
+
+            <a href="/laptops/?search=Apple">
+                Apple
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Shubham Computers.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     WHATSAPP
+========================================= -->
+
+<a
+    href="https://wa.me/917572858187"
+    target="_blank"
+    class="whatsapp-float"
+    aria-label="Chat on WhatsApp">
+
+    💬
+
+</a>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+    function toggleMenu() {
+
+        const navbar =
+            document.querySelector(".navbar");
+
+        if (!navbar) {
+            return;
+        }
+
+        if (navbar.style.display === "flex") {
+
+            navbar.style.display = "";
+
+        } else {
+
+            navbar.style.display = "flex";
+
+            navbar.style.position = "absolute";
+
+            navbar.style.top = "76px";
+
+            navbar.style.left = "0";
+
+            navbar.style.right = "0";
+
+            navbar.style.flexDirection = "column";
+
+            navbar.style.alignItems = "flex-start";
+
+            navbar.style.padding = "20px 4%";
+
+            navbar.style.background = "#ffffff";
+
+            navbar.style.borderBottom =
+                "1px solid #e5e9f2";
+
+            navbar.style.boxShadow =
+                "0 10px 30px rgba(0,0,0,0.08)";
+        }
+
+    }
+
+
+    document
+        .querySelectorAll(".navbar a")
+        .forEach(function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    if (window.innerWidth <= 1000) {
+
+                        const navbar =
+                            document.querySelector(".navbar");
+
+                        if (navbar) {
+                            navbar.style.display = "";
+                        }
+
+                    }
+
+                }
+            );
+
+        });
+
+</script>
+
+
+</body>
+
+</html>

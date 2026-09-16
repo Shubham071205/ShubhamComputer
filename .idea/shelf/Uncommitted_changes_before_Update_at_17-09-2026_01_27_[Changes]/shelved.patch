@@ -1,0 +1,279 @@
+Index: static/js/home.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n\r\nfunction toggleSearch() {\r\n    const searchBox = document.getElementById(\"searchBox\");\r\n\r\n    if (searchBox) {\r\n        searchBox.classList.toggle(\"active\");\r\n\r\n        if (searchBox.classList.contains(\"active\")) {\r\n            const input = document.getElementById(\"searchInput\");\r\n\r\n            if (input) {\r\n                input.focus();\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n// -------------------------\r\n// MOBILE MENU\r\n// -------------------------\r\n\r\nfunction toggleMenu() {\r\n\r\n    const navbar = document.querySelector(\".navbar\");\r\n\r\n    if (!navbar) {\r\n        return;\r\n    }\r\n\r\n    if (navbar.style.display === \"flex\") {\r\n\r\n        navbar.style.display = \"\";\r\n\r\n    } else {\r\n\r\n        navbar.style.display = \"flex\";\r\n\r\n        navbar.style.position = \"absolute\";\r\n        navbar.style.top = \"76px\";\r\n        navbar.style.left = \"0\";\r\n        navbar.style.right = \"0\";\r\n        navbar.style.flexDirection = \"column\";\r\n        navbar.style.alignItems = \"flex-start\";\r\n        navbar.style.padding = \"20px 4%\";\r\n        navbar.style.background = \"#ffffff\";\r\n        navbar.style.borderBottom = \"1px solid #e5e9f2\";\r\n        navbar.style.boxShadow = \"0 10px 30px rgba(0,0,0,0.08)\";\r\n    }\r\n}\r\n\r\n\r\n// -------------------------\r\n// SEARCH ENTER KEY\r\n// -------------------------\r\n\r\nconst searchInput = document.getElementById(\"searchInput\");\r\n\r\nif (searchInput) {\r\n\r\n    searchInput.addEventListener(\"keypress\", function(event) {\r\n\r\n        if (event.key === \"Enter\") {\r\n\r\n            const searchValue = searchInput.value.trim();\r\n\r\n            if (searchValue !== \"\") {\r\n\r\n                window.location.href =\r\n                    \"/laptops/?search=\" +\r\n                    encodeURIComponent(searchValue);\r\n\r\n            }\r\n\r\n        }\r\n\r\n    });\r\n\r\n}\r\n\r\n\r\n// -------------------------\r\n// CLOSE SEARCH WITH ESC\r\n// -------------------------\r\n\r\ndocument.addEventListener(\"keydown\", function(event) {\r\n\r\n    if (event.key === \"Escape\") {\r\n\r\n        const searchBox = document.getElementById(\"searchBox\");\r\n\r\n        if (searchBox) {\r\n            searchBox.classList.remove(\"active\");\r\n        }\r\n\r\n    }\r\n\r\n});\r\n\r\n\r\n// -------------------------\r\n// CLOSE MOBILE MENU\r\n// -------------------------\r\n\r\ndocument.querySelectorAll(\".navbar a\").forEach(function(link) {\r\n\r\n    link.addEventListener(\"click\", function() {\r\n\r\n        if (window.innerWidth <= 1000) {\r\n\r\n            const navbar = document.querySelector(\".navbar\");\r\n\r\n            if (navbar) {\r\n                navbar.style.display = \"\";\r\n            }\r\n\r\n        }\r\n\r\n    });\r\n\r\n});\r\n\r\n\r\n// -------------------------\r\n// SIMPLE SCROLL ANIMATION\r\n// -------------------------\r\n\r\nconst animatedElements = document.querySelectorAll(\r\n    \".product-card, .why-card, .service-card, .review-card, .brand-card\"\r\n);\r\n\r\nconst observer = new IntersectionObserver(\r\n\r\n    function(entries) {\r\n\r\n        entries.forEach(function(entry) {\r\n\r\n            if (entry.isIntersecting) {\r\n\r\n                entry.target.style.opacity = \"1\";\r\n                entry.target.style.transform = \"translateY(0)\";\r\n\r\n            }\r\n\r\n        });\r\n\r\n    },\r\n\r\n    {\r\n        threshold: 0.1\r\n    }\r\n\r\n);\r\n\r\n\r\nanimatedElements.forEach(function(element) {\r\n\r\n    element.style.opacity = \"0\";\r\n    element.style.transform = \"translateY(20px)\";\r\n    element.style.transition = \"opacity 0.5s ease, transform 0.5s ease\";\r\n\r\n    observer.observe(element);\r\n\r\n});\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/static/js/home.js b/static/js/home.js
+--- a/static/js/home.js	(revision 12398cdf909eb721d04cc039061e6c06ac2f343f)
++++ b/static/js/home.js	(date 1789588580990)
+@@ -164,3 +164,230 @@
+ 
+ });
+ 
++document.addEventListener("DOMContentLoaded", function () {
++
++    const revealElements = document.querySelectorAll(
++        ".section-heading, " +
++        ".product-card, " +
++        ".brand-card, " +
++        ".service-card, " +
++        ".why-card, " +
++        ".review-card, " +
++        ".about-card, " +
++        ".value-card, " +
++        ".sell-card, " +
++        ".step-card, " +
++        ".contact-info, " +
++        ".contact-form-card, " +
++        ".hours-section, " +
++        ".sell-cta, " +
++        ".about-cta, " +
++        ".contact-cta"
++    );
++
++    revealElements.forEach(function (element) {
++        element.classList.add("reveal");
++    });
++
++
++    const revealObserver = new IntersectionObserver(
++        function (entries, observer) {
++
++            entries.forEach(function (entry) {
++
++                if (entry.isIntersecting) {
++
++                    entry.target.classList.add("show");
++
++                    observer.unobserve(entry.target);
++                }
++
++            });
++
++        },
++        {
++            threshold: 0.12
++        }
++    );
++
++
++    revealElements.forEach(function (element) {
++
++        revealObserver.observe(element);
++
++    });
++
++});
++
++/* =========================================================
++   ANIMATION ONLY
++   Does NOT change your CSS or page layout
++   ========================================================= */
++
++document.addEventListener("DOMContentLoaded", function () {
++
++    const elements = document.querySelectorAll(
++        ".brand-card, .product-card, .why-card, .service-card, .review-card, .about-card, .value-card, .sell-card, .step-card, .contact-info, .contact-form-card"
++    );
++
++    /* ---------------------------------------------------------
++       SCROLL REVEAL
++       --------------------------------------------------------- */
++
++    const observer = new IntersectionObserver(
++        function (entries) {
++
++            entries.forEach(function (entry) {
++
++                if (entry.isIntersecting) {
++
++                    entry.target.animate(
++                        [
++                            {
++                                opacity: 0,
++                                transform: "translateY(30px)"
++                            },
++                            {
++                                opacity: 1,
++                                transform: "translateY(0)"
++                            }
++                        ],
++                        {
++                            duration: 700,
++                            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
++                            fill: "both"
++                        }
++                    );
++
++                    observer.unobserve(entry.target);
++                }
++
++            });
++
++        },
++        {
++            threshold: 0.12
++        }
++    );
++
++
++    elements.forEach(function (element, index) {
++
++        /* Smooth hover transition */
++        element.style.transition =
++            "transform 0.35s ease, box-shadow 0.35s ease";
++
++        /* Slight stagger effect */
++        element.style.animationDelay =
++            (index * 70) + "ms";
++
++        observer.observe(element);
++
++    });
++
++
++    /* ---------------------------------------------------------
++       CARD HOVER ANIMATION
++       --------------------------------------------------------- */
++
++    elements.forEach(function (element) {
++
++        element.addEventListener("mouseenter", function () {
++
++            element.style.transform = "translateY(-6px)";
++
++        });
++
++        element.addEventListener("mouseleave", function () {
++
++            element.style.transform = "translateY(0)";
++
++        });
++
++    });
++
++
++    /* ---------------------------------------------------------
++       BUTTON SMOOTH ANIMATION
++       --------------------------------------------------------- */
++
++    const buttons = document.querySelectorAll(
++        "button, .header-contact, .product-btn, .view-details-btn, .cta-btn, .sell-btn, .whatsapp-button, .cta-whatsapp, .submit-button"
++    );
++
++    buttons.forEach(function (button) {
++
++        button.style.transition =
++            "transform 0.25s ease, box-shadow 0.25s ease";
++
++        button.addEventListener("mouseenter", function () {
++
++            button.style.transform = "translateY(-3px)";
++
++        });
++
++        button.addEventListener("mouseleave", function () {
++
++            button.style.transform = "translateY(0)";
++
++        });
++
++        button.addEventListener("mousedown", function () {
++
++            button.style.transform = "scale(0.97)";
++
++        });
++
++        button.addEventListener("mouseup", function () {
++
++            button.style.transform = "translateY(-3px)";
++
++        });
++
++    });
++
++
++    /* ---------------------------------------------------------
++       NAVIGATION SMOOTH HOVER
++       --------------------------------------------------------- */
++
++    const navLinks = document.querySelectorAll(".navbar a");
++
++    navLinks.forEach(function (link) {
++
++        link.style.transition =
++            "transform 0.25s ease, color 0.25s ease";
++
++        link.addEventListener("mouseenter", function () {
++            link.style.transform = "translateY(-2px)";
++        });
++
++        link.addEventListener("mouseleave", function () {
++            link.style.transform = "translateY(0)";
++        });
++
++    });
++
++
++    /* ---------------------------------------------------------
++       WHATSAPP FLOATING BUTTON
++       --------------------------------------------------------- */
++
++    const whatsapp = document.querySelector(".whatsapp-float");
++
++    if (whatsapp) {
++
++        whatsapp.style.transition =
++            "transform 0.3s ease";
++
++        whatsapp.addEventListener("mouseenter", function () {
++            whatsapp.style.transform = "scale(1.08)";
++        });
++
++        whatsapp.addEventListener("mouseleave", function () {
++            whatsapp.style.transform = "scale(1)";
++        });
++
++    }
++
++});
+\ No newline at end of file
+Index: templates/home.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n{% load static %}\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n\r\n    <title>Shubham Computers | Refurbished Laptops in Ahmedabad</title>\r\n\r\n    <meta name=\"description\"\r\n          content=\"Buy quality refurbished laptops in Ahmedabad from Shubham Computers. Tested, cleaned and warranty available.\">\r\n\r\n    <link rel=\"stylesheet\" href=\"{% static 'css/home.css' %}\">\r\n</head>\r\n\r\n<body>\r\n\r\n<!-- ================= HEADER ================= -->\r\n<header class=\"header\">\r\n    <div class=\"container nav-container\">\r\n\r\n        <a href=\"/\" class=\"logo\">\r\n            <span class=\"logo-icon\">\uD83D\uDCBB</span>\r\n            <span>\r\n                <strong>Shubham</strong>\r\n                <small>Computers</small>\r\n            </span>\r\n        </a>\r\n\r\n        <nav class=\"navbar\">\r\n            <a href=\"/\">Home</a>\r\n            <a href=\"/laptops/\">Laptops</a>\r\n            <a href=\"/brands/\">Brands</a>\r\n            <a href=\"/services/\">Services</a>\r\n            <a href=\"/sell-laptop/\">Sell/Exchange</a>\r\n            <a href=\"/about/\">About Us</a>\r\n            <a href=\"/contact/\">Contact</a>\r\n        </nav>\r\n\r\n        <div class=\"nav-actions\">\r\n            <button class=\"search-btn\" onclick=\"toggleSearch()\">\uD83D\uDD0D</button>\r\n            <a href=\"/contact/\" class=\"nav-contact\">Contact</a>\r\n            <button class=\"menu-btn\" onclick=\"toggleMenu()\">☰</button>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"search-box\" id=\"searchBox\">\r\n        <div class=\"container\">\r\n            <input type=\"text\" placeholder=\"Search laptops...\" id=\"searchInput\">\r\n        </div>\r\n    </div>\r\n</header>\r\n\r\n\r\n<!-- ================= HERO ================= -->\r\n<section class=\"hero\">\r\n\r\n    <div class=\"container hero-container\">\r\n\r\n        <div class=\"hero-content\">\r\n\r\n            <span class=\"hero-badge\">\r\n                ✨ Trusted Refurbished Laptop Store\r\n            </span>\r\n\r\n            <h1>\r\n                Quality Refurbished\r\n                <span>Laptops</span>\r\n                at Affordable Prices\r\n            </h1>\r\n\r\n            <p>\r\n                Tested, cleaned and ready to use.\r\n                Get reliable refurbished laptops with warranty\r\n                and expert support from Shubham Computers.\r\n            </p>\r\n\r\n            <div class=\"hero-buttons\">\r\n                <a href=\"/laptops/\" class=\"btn btn-primary\">\r\n                    Shop Laptops →\r\n                </a>\r\n\r\n                <a href=\"https://wa.me/917572858187\"\r\n                   target=\"_blank\"\r\n                   class=\"btn btn-whatsapp\">\r\n                    \uD83D\uDCAC WhatsApp Us\r\n                </a>\r\n            </div>\r\n\r\n            <div class=\"hero-benefits\">\r\n\r\n                <div class=\"benefit\">\r\n                    <span>✓</span>\r\n                    <div>\r\n                        <strong>Tested & Verified</strong>\r\n                        <small>Quality checked</small>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"benefit\">\r\n                    <span>\uD83D\uDEE1</span>\r\n                    <div>\r\n                        <strong>Warranty</strong>\r\n                        <small>Peace of mind</small>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"benefit\">\r\n                    <span>₹</span>\r\n                    <div>\r\n                        <strong>Best Prices</strong>\r\n                        <small>Budget friendly</small>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"benefit\">\r\n                    <span>★</span>\r\n                    <div>\r\n                        <strong>Expert Support</strong>\r\n                        <small>We're here to help</small>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n\r\n        <!-- Laptop Visual -->\r\n        <div class=\"hero-laptop\">\r\n\r\n            <div class=\"laptop-glow\"></div>\r\n\r\n            <div class=\"laptop\">\r\n                <div class=\"laptop-screen\">\r\n\r\n                    <div class=\"screen-top\">\r\n                        <span>SHUBHAM</span>\r\n                        <span>COMPUTERS</span>\r\n                    </div>\r\n\r\n                    <div class=\"screen-content\">\r\n                        <div class=\"screen-logo\">\uD83D\uDCBB</div>\r\n                        <h3>REFURBISHED</h3>\r\n                        <p>QUALITY LAPTOPS</p>\r\n                    </div>\r\n\r\n                </div>\r\n\r\n                <div class=\"laptop-base\">\r\n                    <div class=\"keyboard\"></div>\r\n                    <div class=\"touchpad\"></div>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= BRANDS ================= -->\r\n<section class=\"brands-section\">\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"section-heading center\">\r\n            <span class=\"section-label\">TOP BRANDS</span>\r\n            <h2>Shop by Brand</h2>\r\n            <p>Choose from trusted laptop brands</p>\r\n        </div>\r\n\r\n        <div class=\"brands-grid\">\r\n\r\n            <a href=\"/brands/dell/\" class=\"brand-card\">\r\n                <strong>DELL</strong>\r\n                <span>View Laptops →</span>\r\n            </a>\r\n\r\n            <a href=\"/brands/hp/\" class=\"brand-card\">\r\n                <strong>HP</strong>\r\n                <span>View Laptops →</span>\r\n            </a>\r\n\r\n            <a href=\"/brands/lenovo/\" class=\"brand-card\">\r\n                <strong>LENOVO</strong>\r\n                <span>View Laptops →</span>\r\n            </a>\r\n\r\n            <a href=\"/brands/acer/\" class=\"brand-card\">\r\n                <strong>ACER</strong>\r\n                <span>View Laptops →</span>\r\n            </a>\r\n\r\n            <a href=\"/brands/asus/\" class=\"brand-card\">\r\n                <strong>ASUS</strong>\r\n                <span>View Laptops →</span>\r\n            </a>\r\n\r\n            <a href=\"/brands/apple/\" class=\"brand-card\">\r\n                <strong>APPLE</strong>\r\n                <span>View Laptops →</span>\r\n            </a>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= FEATURED LAPTOPS ================= -->\r\n<section class=\"products-section\">\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"section-header\">\r\n\r\n            <div>\r\n                <span class=\"section-label\">FEATURED PRODUCTS</span>\r\n                <h2>Popular Refurbished Laptops</h2>\r\n                <p>Quality laptops at prices you'll love.</p>\r\n            </div>\r\n\r\n            <a href=\"/laptops/\" class=\"view-all\">\r\n                View All Laptops →\r\n            </a>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"products-grid\">\r\n\r\n            <!-- Product 1 -->\r\n            <div class=\"product-card\">\r\n\r\n                <div class=\"product-image\">\r\n                    <span class=\"condition\">Refurbished</span>\r\n                    <div class=\"product-placeholder\">\uD83D\uDCBB</div>\r\n                </div>\r\n\r\n                <div class=\"product-info\">\r\n\r\n                    <span class=\"product-brand\">DELL</span>\r\n\r\n                    <h3>Dell Latitude 5490</h3>\r\n\r\n                    <p class=\"specs\">\r\n                        Intel Core i5 • 8GB RAM • 256GB SSD\r\n                    </p>\r\n\r\n                    <div class=\"product-bottom\">\r\n\r\n                        <div>\r\n                            <span class=\"price\">₹18,999</span>\r\n                            <span class=\"old-price\">₹28,999</span>\r\n                        </div>\r\n\r\n                        <a href=\"/laptops/\" class=\"product-btn\">\r\n                            View\r\n                        </a>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <!-- Product 2 -->\r\n            <div class=\"product-card\">\r\n\r\n                <div class=\"product-image\">\r\n                    <span class=\"condition\">Refurbished</span>\r\n                    <div class=\"product-placeholder\">\uD83D\uDCBB</div>\r\n                </div>\r\n\r\n                <div class=\"product-info\">\r\n\r\n                    <span class=\"product-brand\">HP</span>\r\n\r\n                    <h3>HP EliteBook 840 G5</h3>\r\n\r\n                    <p class=\"specs\">\r\n                        Intel Core i5 • 8GB RAM • 256GB SSD\r\n                    </p>\r\n\r\n                    <div class=\"product-bottom\">\r\n\r\n                        <div>\r\n                            <span class=\"price\">₹22,999</span>\r\n                            <span class=\"old-price\">₹32,999</span>\r\n                        </div>\r\n\r\n                        <a href=\"/laptops/\" class=\"product-btn\">\r\n                            View\r\n                        </a>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <!-- Product 3 -->\r\n            <div class=\"product-card\">\r\n\r\n                <div class=\"product-image\">\r\n                    <span class=\"condition\">Refurbished</span>\r\n                    <div class=\"product-placeholder\">\uD83D\uDCBB</div>\r\n                </div>\r\n\r\n                <div class=\"product-info\">\r\n\r\n                    <span class=\"product-brand\">LENOVO</span>\r\n\r\n                    <h3>Lenovo ThinkPad T480</h3>\r\n\r\n                    <p class=\"specs\">\r\n                        Intel Core i5 • 8GB RAM • 512GB SSD\r\n                    </p>\r\n\r\n                    <div class=\"product-bottom\">\r\n\r\n                        <div>\r\n                            <span class=\"price\">₹25,999</span>\r\n                            <span class=\"old-price\">₹36,999</span>\r\n                        </div>\r\n\r\n                        <a href=\"/laptops/\" class=\"product-btn\">\r\n                            View\r\n                        </a>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <!-- Product 4 -->\r\n            <div class=\"product-card\">\r\n\r\n                <div class=\"product-image\">\r\n                    <span class=\"condition\">Refurbished</span>\r\n                    <div class=\"product-placeholder\">\uD83D\uDCBB</div>\r\n                </div>\r\n\r\n                <div class=\"product-info\">\r\n\r\n                    <span class=\"product-brand\">DELL</span>\r\n\r\n                    <h3>Dell Latitude 5520</h3>\r\n\r\n                    <p class=\"specs\">\r\n                        Intel Core i5 • 16GB RAM • 512GB SSD\r\n                    </p>\r\n\r\n                    <div class=\"product-bottom\">\r\n\r\n                        <div>\r\n                            <span class=\"price\">₹21,999</span>\r\n                            <span class=\"old-price\">₹34,999</span>\r\n                        </div>\r\n\r\n                        <a href=\"/laptops/\" class=\"product-btn\">\r\n                            View\r\n                        </a>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= WHY CHOOSE US ================= -->\r\n<section class=\"why-section\">\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"section-heading center\">\r\n\r\n            <span class=\"section-label\">WHY CHOOSE US</span>\r\n\r\n            <h2>Why Shubham Computers?</h2>\r\n\r\n            <p>\r\n                We make buying refurbished laptops simple,\r\n                safe and affordable.\r\n            </p>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"why-grid\">\r\n\r\n            <div class=\"why-card\">\r\n                <div class=\"why-icon\">✓</div>\r\n                <h3>Quality Tested</h3>\r\n                <p>\r\n                    Every laptop is thoroughly tested\r\n                    before being sold.\r\n                </p>\r\n            </div>\r\n\r\n            <div class=\"why-card\">\r\n                <div class=\"why-icon\">\uD83D\uDEE1</div>\r\n                <h3>Warranty Included</h3>\r\n                <p>\r\n                    Get warranty support with selected\r\n                    refurbished laptops.\r\n                </p>\r\n            </div>\r\n\r\n            <div class=\"why-card\">\r\n                <div class=\"why-icon\">₹</div>\r\n                <h3>Affordable Prices</h3>\r\n                <p>\r\n                    Save money compared to buying\r\n                    brand-new laptops.\r\n                </p>\r\n            </div>\r\n\r\n            <div class=\"why-card\">\r\n                <div class=\"why-icon\">\uD83D\uDD27</div>\r\n                <h3>Expert Support</h3>\r\n                <p>\r\n                    Get help choosing the right laptop\r\n                    for your needs.\r\n                </p>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= SERVICES ================= -->\r\n<section class=\"services-section\">\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"section-header\">\r\n\r\n            <div>\r\n                <span class=\"section-label\">OUR SERVICES</span>\r\n\r\n                <h2>More Than Just Laptops</h2>\r\n\r\n                <p>\r\n                    Complete computer solutions under one roof.\r\n                </p>\r\n            </div>\r\n\r\n            <a href=\"/services/\" class=\"view-all\">\r\n                All Services →\r\n            </a>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"services-grid\">\r\n\r\n            <a href=\"/services/\" class=\"service-card\">\r\n                <div class=\"service-icon\">\uD83D\uDCBB</div>\r\n                <h3>Laptop Sales</h3>\r\n                <p>\r\n                    Quality refurbished laptops\r\n                    at affordable prices.\r\n                </p>\r\n                <span>Learn More →</span>\r\n            </a>\r\n\r\n            <a href=\"/services/\" class=\"service-card\">\r\n                <div class=\"service-icon\">\uD83D\uDD27</div>\r\n                <h3>Laptop Repair</h3>\r\n                <p>\r\n                    Professional laptop repair\r\n                    and maintenance services.\r\n                </p>\r\n                <span>Learn More →</span>\r\n            </a>\r\n\r\n            <a href=\"/sell-laptop/\" class=\"service-card\">\r\n                <div class=\"service-icon\">\uD83D\uDD04</div>\r\n                <h3>Sell / Exchange</h3>\r\n                <p>\r\n                    Sell your old laptop or\r\n                    exchange it for another.\r\n                </p>\r\n                <span>Learn More →</span>\r\n            </a>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= REFURBISHED EXPLAINED ================= -->\r\n<section class=\"refurbished-section\">\r\n\r\n    <div class=\"container refurbished-container\">\r\n\r\n        <div class=\"refurbished-content\">\r\n\r\n            <span class=\"section-label\">\r\n                WHAT IS REFURBISHED?\r\n            </span>\r\n\r\n            <h2>\r\n                Smart Buying Starts With\r\n                <span>Refurbished</span>\r\n            </h2>\r\n\r\n            <p>\r\n                A refurbished laptop is a pre-owned device that\r\n                has been inspected, tested, cleaned and prepared\r\n                for reliable everyday use.\r\n            </p>\r\n\r\n            <div class=\"refurbished-points\">\r\n\r\n                <div>\r\n                    <span>✓</span>\r\n                    <strong>Professionally Tested</strong>\r\n                </div>\r\n\r\n                <div>\r\n                    <span>✓</span>\r\n                    <strong>Cleaned & Checked</strong>\r\n                </div>\r\n\r\n                <div>\r\n                    <span>✓</span>\r\n                    <strong>Value for Money</strong>\r\n                </div>\r\n\r\n                <div>\r\n                    <span>✓</span>\r\n                    <strong>Warranty Available</strong>\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <a href=\"/refurbished-laptops/\" class=\"btn btn-primary\">\r\n                Learn More →\r\n            </a>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"refurbished-box\">\r\n\r\n            <div class=\"big-check\">✓</div>\r\n\r\n            <h3>TESTED</h3>\r\n\r\n            <p>\r\n                Every laptop goes through\r\n                quality checks before delivery.\r\n            </p>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= REVIEWS ================= -->\r\n<section class=\"reviews-section\">\r\n\r\n    <div class=\"container\">\r\n\r\n        <div class=\"section-heading center\">\r\n\r\n            <span class=\"section-label\">CUSTOMER REVIEWS</span>\r\n\r\n            <h2>What Our Customers Say</h2>\r\n\r\n            <p>\r\n                Your satisfaction is our priority.\r\n            </p>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"reviews-grid\">\r\n\r\n            <div class=\"review-card\">\r\n\r\n                <div class=\"stars\">★★★★★</div>\r\n\r\n                <p>\r\n                    \"Good quality laptop at a reasonable price.\r\n                    The laptop was clean and working perfectly.\"\r\n                </p>\r\n\r\n                <div class=\"review-user\">\r\n                    <div class=\"avatar\">R</div>\r\n                    <div>\r\n                        <strong>Rahul</strong>\r\n                        <span>Ahmedabad</span>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <div class=\"review-card\">\r\n\r\n                <div class=\"stars\">★★★★★</div>\r\n\r\n                <p>\r\n                    \"Very helpful service. They explained\r\n                    everything clearly before I purchased.\"\r\n                </p>\r\n\r\n                <div class=\"review-user\">\r\n                    <div class=\"avatar\">P</div>\r\n                    <div>\r\n                        <strong>Priya</strong>\r\n                        <span>Ahmedabad</span>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n            <div class=\"review-card\">\r\n\r\n                <div class=\"stars\">★★★★★</div>\r\n\r\n                <p>\r\n                    \"Bought a refurbished Dell laptop.\r\n                    Excellent value for the money.\"\r\n                </p>\r\n\r\n                <div class=\"review-user\">\r\n                    <div class=\"avatar\">A</div>\r\n                    <div>\r\n                        <strong>Akash</strong>\r\n                        <span>Ahmedabad</span>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= CTA ================= -->\r\n<section class=\"cta-section\">\r\n\r\n    <div class=\"container cta-container\">\r\n\r\n        <div>\r\n            <span class=\"section-label\">NEED HELP?</span>\r\n\r\n            <h2>Looking for the Right Laptop?</h2>\r\n\r\n            <p>\r\n                Tell us your budget and requirements.\r\n                We'll help you find the right refurbished laptop.\r\n            </p>\r\n        </div>\r\n\r\n        <div class=\"cta-buttons\">\r\n\r\n            <a href=\"/contact/\" class=\"btn btn-light\">\r\n                Contact Us →\r\n            </a>\r\n\r\n            <a href=\"https://wa.me/917572858187\"\r\n               target=\"_blank\"\r\n               class=\"btn btn-whatsapp\">\r\n                \uD83D\uDCAC WhatsApp Us\r\n            </a>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</section>\r\n\r\n\r\n<!-- ================= FOOTER ================= -->\r\n<footer class=\"footer\">\r\n\r\n    <div class=\"container footer-grid\">\r\n\r\n        <div class=\"footer-about\">\r\n\r\n            <a href=\"/\" class=\"logo footer-logo\">\r\n                <span class=\"logo-icon\">\uD83D\uDCBB</span>\r\n                <span>\r\n                    <strong>Shubham</strong>\r\n                    <small>Computers</small>\r\n                </span>\r\n            </a>\r\n\r\n            <p>\r\n                Quality refurbished laptops at affordable prices.\r\n                Tested, reliable and backed by support.\r\n            </p>\r\n\r\n            <p>\r\n                \uD83D\uDCCD Ahmedabad, Gujarat\r\n            </p>\r\n\r\n            <p>\r\n                \uD83D\uDCDE 7572858187\r\n            </p>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"footer-column\">\r\n\r\n            <h3>Quick Links</h3>\r\n\r\n            <a href=\"/\">Home</a>\r\n            <a href=\"/laptops/\">Laptops</a>\r\n            <a href=\"/brands/\">Brands</a>\r\n            <a href=\"/services/\">Services</a>\r\n            <a href=\"/about/\">About Us</a>\r\n            <a href=\"/contact/\">Contact</a>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"footer-column\">\r\n\r\n            <h3>Customer Support</h3>\r\n\r\n            <a href=\"/sell-laptop/\">Sell / Exchange</a>\r\n            <a href=\"/warranty/\">Warranty</a>\r\n            <a href=\"/returns/\">Return Policy</a>\r\n            <a href=\"/faq/\">FAQ</a>\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"footer-column\">\r\n\r\n            <h3>Popular Brands</h3>\r\n\r\n            <a href=\"/brands/dell/\">Dell</a>\r\n            <a href=\"/brands/hp/\">HP</a>\r\n            <a href=\"/brands/lenovo/\">Lenovo</a>\r\n            <a href=\"/brands/acer/\">Acer</a>\r\n            <a href=\"/brands/asus/\">ASUS</a>\r\n            <a href=\"/brands/apple/\">Apple</a>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n    <div class=\"footer-bottom\">\r\n\r\n        <div class=\"container\">\r\n\r\n            <p>\r\n                © 2026 Shubham Computers. All Rights Reserved.\r\n            </p>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</footer>\r\n\r\n\r\n<!-- ================= WHATSAPP FLOAT ================= -->\r\n<a href=\"https://wa.me/917572858187\"\r\n   target=\"_blank\"\r\n   class=\"whatsapp-float\"\r\n   aria-label=\"Chat on WhatsApp\">\r\n    \uD83D\uDCAC\r\n</a>\r\n\r\n\r\n<script src=\"{% static 'js/home.js' %}\"></script>\r\n\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/home.html b/templates/home.html
+--- a/templates/home.html	(revision 12398cdf909eb721d04cc039061e6c06ac2f343f)
++++ b/templates/home.html	(date 1789587116302)
+@@ -1,18 +1,20 @@
+-
+ {% load static %}
+ 
+ <!DOCTYPE html>
+ <html lang="en">
++
+ <head>
++
+     <meta charset="UTF-8">
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+-    <title>Shubham Computers | Refurbished Laptops in Ahmedabad</title>
++    <meta name="viewport"
++          content="width=device-width, initial-scale=1.0">
+ 
+-    <meta name="description"
+-          content="Buy quality refurbished laptops in Ahmedabad from Shubham Computers. Tested, cleaned and warranty available.">
++    <title>Shubham Computers</title>
+ 
+-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
++    <link rel="stylesheet"
++          href="{% static 'css/home.css' %}">
++
+ </head>
+ 
+ <body>

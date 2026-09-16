@@ -1,0 +1,740 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Shubham Computers</title>
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <style>
+        .about-page {
+            background: #f6f8fc;
+            padding-bottom: 70px;
+        }
+
+        /* HERO */
+
+        .about-hero {
+            background: linear-gradient(135deg, #081a3a, #123b7a);
+            color: white;
+            padding: 75px 5%;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .about-hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #dbe7ff;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* CONTAINER */
+
+        .about-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        /* INTRO */
+
+        .about-intro {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            border: 1px solid #e5e9f2;
+            box-shadow: 0 10px 30px rgba(15, 35, 70, 0.07);
+            margin-bottom: 35px;
+        }
+
+        .about-intro h2 {
+            color: #081a3a;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-intro p {
+            color: #667085;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        /* TWO COLUMN */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid #e5e9f2;
+            box-shadow: 0 10px 30px rgba(15, 35, 70, 0.07);
+        }
+
+        .about-card h2 {
+            color: #081a3a;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .about-card p {
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        /* VALUES */
+
+        .values-section {
+            margin-top: 20px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            color: #081a3a;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #667085;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 28px 20px;
+            text-align: center;
+            border-radius: 14px;
+            border: 1px solid #e5e9f2;
+            transition: 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(15, 35, 70, 0.10);
+        }
+
+        .value-icon {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .value-card h3 {
+            color: #172033;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* WHY US */
+
+        .why-section {
+            margin-top: 45px;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            border: 1px solid #e5e9f2;
+        }
+
+        .why-section h2 {
+            text-align: center;
+            color: #081a3a;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .why-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 35px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .why-check {
+            width: 30px;
+            height: 30px;
+            background: #eaf1ff;
+            color: #1d4ed8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .why-item h3 {
+            color: #172033;
+            margin-bottom: 4px;
+        }
+
+        .why-item p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* CTA */
+
+        .about-cta {
+            margin-top: 45px;
+            background: linear-gradient(135deg, #081a3a, #123b7a);
+            color: white;
+            padding: 45px 30px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .about-cta h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .about-cta p {
+            color: #dbe7ff;
+            margin-bottom: 25px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #1d4ed8;
+        }
+
+        .cta-whatsapp {
+            background: #16a34a;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .why-list {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero h1 {
+                font-size: 35px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .about-hero {
+                padding: 55px 5%;
+            }
+
+            .about-hero h1 {
+                font-size: 29px;
+            }
+
+            .about-intro,
+            .about-card,
+            .why-section {
+                padding: 25px 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-cta {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+        <a href="/">Shubham Computers</a>
+    </div>
+
+    <nav class="navbar">
+
+        <a href="/">Home</a>
+
+        <a href="/laptops/">Laptops</a>
+
+        <a href="/brands/">Brands</a>
+
+        <a href="/services/">Services</a>
+
+        <a href="/sell-laptop/">Sell / Exchange</a>
+
+        <a href="/about/">About Us</a>
+
+        <a href="/contact/">Contact</a>
+
+    </nav>
+
+    <div class="header-actions">
+
+        <a href="/laptops/" class="header-search">
+            🔍
+        </a>
+
+        <a href="/contact/" class="header-contact">
+            Contact
+        </a>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="about-hero">
+
+    <h1>About Shubham Computers</h1>
+
+    <p>
+        Your trusted destination for quality refurbished laptops,
+        computer services and practical technology solutions
+        in Ahmedabad, Gujarat.
+    </p>
+
+</section>
+
+
+<main class="about-page">
+
+    <div class="about-container">
+
+        <!-- INTRO -->
+
+        <section class="about-intro">
+
+            <h2>Who We Are</h2>
+
+            <p>
+                Shubham Computers is focused on providing quality
+                refurbished and used laptops at practical prices.
+                We help students, professionals, businesses and
+                everyday users find reliable computers according
+                to their needs and budget.
+            </p>
+
+            <p>
+                Along with laptop sales, we also provide computer
+                services such as laptop repair, RAM and SSD upgrades,
+                software installation, cleaning, data transfer and
+                general computer maintenance.
+            </p>
+
+            <p>
+                Our goal is simple: provide customers with dependable
+                products, clear information and helpful support.
+            </p>
+
+        </section>
+
+
+        <!-- MISSION / APPROACH -->
+
+        <section class="about-grid">
+
+            <div class="about-card">
+
+                <h2>🎯 Our Mission</h2>
+
+                <p>
+                    Our mission is to make good-quality computing
+                    devices more accessible by offering properly
+                    checked refurbished laptops at affordable prices.
+                </p>
+
+                <p>
+                    We aim to make the buying process simple and
+                    transparent so customers can choose a laptop
+                    with confidence.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h2>💡 Our Approach</h2>
+
+                <p>
+                    Every customer has different requirements.
+                    Instead of recommending a laptop only based
+                    on price, we focus on understanding the user's
+                    actual needs.
+                </p>
+
+                <p>
+                    Whether you need a laptop for study, office work,
+                    programming, business or everyday use, we help
+                    you understand the available options.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VALUES -->
+
+        <section class="values-section">
+
+            <div class="section-heading">
+
+                <h2>What We Believe In</h2>
+
+                <p>
+                    The principles behind our customer service.
+                </p>
+
+            </div>
+
+
+            <div class="values-grid">
+
+                <div class="value-card">
+
+                    <div class="value-icon">🔍</div>
+
+                    <h3>Quality</h3>
+
+                    <p>
+                        We focus on properly checking products
+                        before offering them to customers.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <div class="value-icon">💰</div>
+
+                    <h3>Fair Pricing</h3>
+
+                    <p>
+                        We aim to provide practical pricing
+                        for different customer budgets.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <div class="value-icon">🤝</div>
+
+                    <h3>Trust</h3>
+
+                    <p>
+                        We believe clear communication helps
+                        build long-term customer relationships.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <div class="value-icon">🛠️</div>
+
+                    <h3>Support</h3>
+
+                    <p>
+                        Our relationship with customers does
+                        not end after the laptop purchase.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHY CHOOSE US -->
+
+        <section class="why-section">
+
+            <h2>Why Choose Shubham Computers?</h2>
+
+            <div class="why-list">
+
+                <div class="why-item">
+
+                    <div class="why-check">✓</div>
+
+                    <div>
+                        <h3>Tested Products</h3>
+
+                        <p>
+                            Refurbished laptops are checked for
+                            important hardware and functional issues.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="why-item">
+
+                    <div class="why-check">✓</div>
+
+                    <div>
+                        <h3>Affordable Options</h3>
+
+                        <p>
+                            Choose from different specifications
+                            and price ranges according to your needs.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="why-item">
+
+                    <div class="why-check">✓</div>
+
+                    <div>
+                        <h3>Expert Guidance</h3>
+
+                        <p>
+                            Get practical assistance when selecting
+                            a laptop or upgrading your existing device.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="why-item">
+
+                    <div class="why-check">✓</div>
+
+                    <div>
+                        <h3>After-Sales Support</h3>
+
+                        <p>
+                            We are available to help with services,
+                            upgrades and other computer requirements.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="about-cta">
+
+            <h2>Looking for a Reliable Laptop?</h2>
+
+            <p>
+                Explore our available refurbished laptops
+                or contact Shubham Computers for assistance.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="/laptops/" class="cta-btn cta-primary">
+                    View Laptops
+                </a>
+
+                <a
+                    href="https://wa.me/917572858187"
+                    target="_blank"
+                    class="cta-btn cta-whatsapp"
+                >
+                    WhatsApp Us
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-column">
+
+            <h3>Shubham Computers</h3>
+
+            <p>
+                Quality refurbished laptops,
+                computer services and reliable
+                support in Ahmedabad.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="/">Home</a>
+            <a href="/laptops/">Laptops</a>
+            <a href="/brands/">Brands</a>
+            <a href="/services/">Services</a>
+            <a href="/sell-laptop/">Sell / Exchange</a>
+            <a href="/about/">About Us</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>📞 7572858187</p>
+
+            <p>📍 Ahmedabad, Gujarat</p>
+
+            <a
+                href="https://wa.me/917572858187"
+                target="_blank"
+            >
+                WhatsApp Us
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Shubham Computers. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+
+<a
+    href="https://wa.me/917572858187"
+    target="_blank"
+    class="whatsapp-float"
+>
+    WhatsApp
+</a>
+
+
+<script>
+
+function toggleMenu() {
+
+    const navbar = document.querySelector(".navbar");
+
+    if (!navbar) {
+        return;
+    }
+
+    if (navbar.style.display === "flex") {
+
+        navbar.style.display = "";
+
+    } else {
+
+        navbar.style.display = "flex";
+        navbar.style.position = "absolute";
+        navbar.style.top = "76px";
+        navbar.style.left = "0";
+        navbar.style.right = "0";
+        navbar.style.flexDirection = "column";
+        navbar.style.alignItems = "flex-start";
+        navbar.style.padding = "20px 4%";
+        navbar.style.background = "#ffffff";
+        navbar.style.borderBottom = "1px solid #e5e9f2";
+        navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.08)";
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1347 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laptop Brands | Shubham Computers</title>
+
+    <meta name="description"
+          content="Explore Dell, HP, Lenovo, Acer, ASUS and Apple refurbished laptops at Shubham Computers.">
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <style>
+
+        /* =================================
+           BRANDS PAGE
+        ================================= */
+
+        .brands-page {
+            background: #f6f8fc;
+            min-height: 70vh;
+            padding: 70px 0 90px;
+        }
+
+
+        /* PAGE HEADER */
+
+        .brands-page-header {
+            max-width: 760px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .brands-page-header h1 {
+            font-size: 44px;
+            line-height: 1.2;
+            color: #081a3a;
+            margin: 12px 0 15px;
+        }
+
+        .brands-page-header h1 span {
+            color: #1d4ed8;
+        }
+
+        .brands-page-header p {
+            color: #667085;
+            font-size: 17px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+
+        /* BRAND SEARCH */
+
+        .brand-search-wrapper {
+            max-width: 650px;
+            margin: 0 auto 50px;
+        }
+
+        .brand-search {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 14px;
+            padding: 7px;
+            box-shadow: 0 10px 30px rgba(15, 35, 70, 0.07);
+        }
+
+        .brand-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 14px 17px;
+            font-size: 16px;
+            color: #172033;
+        }
+
+        .brand-search input::placeholder {
+            color: #98a2b3;
+        }
+
+        .brand-search button {
+            border: none;
+            background: #1d4ed8;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .brand-search button:hover {
+            background: #163ca8;
+        }
+
+
+        /* BRANDS GRID */
+
+        .brands-page-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+
+        /* BRAND CARD */
+
+        .professional-brand-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 18px;
+            padding: 32px;
+            min-height: 245px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(15, 35, 70, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .professional-brand-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(15, 35, 70, 0.13);
+            border-color: #cfd9f2;
+        }
+
+
+        /* Background circle */
+
+        .brand-background-circle {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: #eef4ff;
+            right: -65px;
+            top: -65px;
+        }
+
+
+        /* BRAND ICON */
+
+        .brand-logo-box {
+            position: relative;
+            z-index: 1;
+            width: 70px;
+            height: 70px;
+            background: #081a3a;
+            color: #ffffff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            box-shadow: 0 8px 20px rgba(8, 26, 58, 0.18);
+        }
+
+
+        /* BRAND CONTENT */
+
+        .brand-card-content {
+            position: relative;
+            z-index: 1;
+            margin-top: 25px;
+        }
+
+        .brand-card-content h2 {
+            color: #172033;
+            font-size: 24px;
+            margin: 0 0 8px;
+        }
+
+        .brand-card-content p {
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+
+        /* BUTTON */
+
+        .brand-view-button {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            width: fit-content;
+            background: #1d4ed8;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 11px 17px;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .brand-view-button:hover {
+            background: #163ca8;
+        }
+
+
+        /* BRAND DESCRIPTION SECTION */
+
+        .brands-info-section {
+            margin-top: 75px;
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 20px;
+            padding: 50px;
+        }
+
+        .brands-info-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .brands-info-content .section-label {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .brands-info-content h2 {
+            font-size: 32px;
+            color: #081a3a;
+            margin: 0 0 15px;
+        }
+
+        .brands-info-content h2 span {
+            color: #1d4ed8;
+        }
+
+        .brands-info-content p {
+            color: #667085;
+            line-height: 1.8;
+            margin: 0 0 15px;
+        }
+
+
+        /* INFO POINTS */
+
+        .brand-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin-top: 25px;
+        }
+
+        .brand-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #172033;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .brand-point span {
+            width: 25px;
+            height: 25px;
+            background: #eaf7ef;
+            color: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+
+        /* INFO VISUAL */
+
+        .brands-info-visual {
+            background: #081a3a;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .brands-info-visual-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .brands-info-visual h3 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .brands-info-visual p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+
+        /* CTA */
+
+        .brands-cta {
+            margin-top: 60px;
+            background: linear-gradient(
+                135deg,
+                #1d4ed8,
+                #163ca8
+            );
+            border-radius: 20px;
+            padding: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .brands-cta h2 {
+            color: white;
+            font-size: 28px;
+            margin: 0 0 10px;
+        }
+
+        .brands-cta p {
+            color: #dbe7ff;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .brands-cta-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brands-cta-button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .brands-cta-contact {
+            background: white;
+            color: #081a3a;
+        }
+
+        .brands-cta-whatsapp {
+            background: #16a34a;
+            color: white;
+        }
+
+
+        /* EMPTY SEARCH */
+
+        .brand-no-result {
+            display: none;
+            background: #ffffff;
+            border: 1px solid #e5e9f2;
+            border-radius: 18px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .brand-no-result h2 {
+            margin: 0 0 10px;
+            color: #172033;
+        }
+
+        .brand-no-result p {
+            margin: 0;
+            color: #667085;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+
+            .brands-page-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .brands-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .brands-page {
+                padding: 50px 0 65px;
+            }
+
+            .brands-page-header h1 {
+                font-size: 32px;
+            }
+
+            .brands-page-header p {
+                font-size: 15px;
+            }
+
+            .brand-search {
+                padding: 5px;
+            }
+
+            .brand-search input {
+                min-width: 0;
+                padding: 13px 12px;
+                font-size: 14px;
+            }
+
+            .brand-search button {
+                padding: 12px 14px;
+                font-size: 13px;
+            }
+
+            .brands-page-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .professional-brand-card {
+                min-height: 225px;
+            }
+
+            .brands-info-section {
+                padding: 30px 22px;
+            }
+
+            .brands-info-content h2 {
+                font-size: 26px;
+            }
+
+            .brand-points {
+                grid-template-columns: 1fr;
+            }
+
+            .brands-info-visual {
+                padding: 30px 20px;
+            }
+
+            .brands-cta {
+                padding: 30px 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .brands-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .brands-cta-button {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="header">
+
+    <div class="container nav-container">
+
+        <a href="/" class="logo">
+
+            <span class="logo-icon">
+                💻
+            </span>
+
+            <span>
+                <strong>Shubham</strong>
+                <small>Computers</small>
+            </span>
+
+        </a>
+
+
+        <nav class="navbar">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/laptops/">
+                Laptops
+            </a>
+
+            <a href="/brands/" class="active">
+                Brands
+            </a>
+
+            <a href="/services/">
+                Services
+            </a>
+
+            <a href="/sell-laptop/">
+                Sell/Exchange
+            </a>
+
+            <a href="/about/">
+                About Us
+            </a>
+
+            <a href="/contact/">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a href="/laptops/" class="nav-contact">
+                Shop Laptops
+            </a>
+
+            <button
+                class="menu-btn"
+                onclick="toggleMenu()"
+                aria-label="Menu">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =================================
+     MAIN
+================================= -->
+
+<main class="brands-page">
+
+    <div class="container">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="brands-page-header">
+
+            <span class="section-label">
+                TRUSTED LAPTOP BRANDS
+            </span>
+
+            <h1>
+                Shop By
+                <span>Brand</span>
+            </h1>
+
+            <p>
+                Explore refurbished laptops from trusted and
+                popular brands. Choose the brand you trust and
+                find a laptop that fits your needs and budget.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="brand-search-wrapper">
+
+            <div class="brand-search">
+
+                <input
+                    type="text"
+                    id="brandSearch"
+                    placeholder="Search brand...">
+
+                <button
+                    type="button"
+                    onclick="searchBrand()">
+
+                    🔍 Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BRANDS -->
+
+        <div class="brands-page-grid"
+             id="brandsGrid">
+
+
+            <!-- DELL -->
+
+            <div class="professional-brand-card"
+                 data-brand="dell">
+
+                <div class="brand-background-circle"></div>
+
+                <div>
+
+                    <div class="brand-logo-box">
+                        DELL
+                    </div>
+
+                    <div class="brand-card-content">
+
+                        <h2>
+                            Dell
+                        </h2>
+
+                        <p>
+                            Reliable business and everyday laptops
+                            known for durability and performance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/laptops/?search=Dell"
+                    class="brand-view-button">
+
+                    View Dell Laptops →
+
+                </a>
+
+            </div>
+
+
+            <!-- HP -->
+
+            <div class="professional-brand-card"
+                 data-brand="hp">
+
+                <div class="brand-background-circle"></div>
+
+                <div>
+
+                    <div class="brand-logo-box">
+                        HP
+                    </div>
+
+                    <div class="brand-card-content">
+
+                        <h2>
+                            HP
+                        </h2>
+
+                        <p>
+                            Versatile laptops suitable for students,
+                            professionals and everyday computing.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/laptops/?search=HP"
+                    class="brand-view-button">
+
+                    View HP Laptops →
+
+                </a>
+
+            </div>
+
+
+            <!-- LENOVO -->
+
+            <div class="professional-brand-card"
+                 data-brand="lenovo">
+
+                <div class="brand-background-circle"></div>
+
+                <div>
+
+                    <div class="brand-logo-box">
+                        LEN
+                    </div>
+
+                    <div class="brand-card-content">
+
+                        <h2>
+                            Lenovo
+                        </h2>
+
+                        <p>
+                            ThinkPad and other Lenovo laptops
+                            offering productivity and durability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/laptops/?search=Lenovo"
+                    class="brand-view-button">
+
+                    View Lenovo Laptops →
+
+                </a>
+
+            </div>
+
+
+            <!-- ACER -->
+
+            <div class="professional-brand-card"
+                 data-brand="acer">
+
+                <div class="brand-background-circle"></div>
+
+                <div>
+
+                    <div class="brand-logo-box">
+                        ACER
+                    </div>
+
+                    <div class="brand-card-content">
+
+                        <h2>
+                            Acer
+                        </h2>
+
+                        <p>
+                            Affordable laptops for work, study,
+                            entertainment and everyday use.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/laptops/?search=Acer"
+                    class="brand-view-button">
+
+                    View Acer Laptops →
+
+                </a>
+
+            </div>
+
+
+            <!-- ASUS -->
+
+            <div class="professional-brand-card"
+                 data-brand="asus">
+
+                <div class="brand-background-circle"></div>
+
+                <div>
+
+                    <div class="brand-logo-box">
+                        ASUS
+                    </div>
+
+                    <div class="brand-card-content">
+
+                        <h2>
+                            ASUS
+                        </h2>
+
+                        <p>
+                            Stylish and capable laptops designed
+                            for work, study and entertainment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/laptops/?search=ASUS"
+                    class="brand-view-button">
+
+                    View ASUS Laptops →
+
+                </a>
+
+            </div>
+
+
+            <!-- APPLE -->
+
+            <div class="professional-brand-card"
+                 data-brand="apple">
+
+                <div class="brand-background-circle"></div>
+
+                <div>
+
+                    <div class="brand-logo-box">
+                        
+                    </div>
+
+                    <div class="brand-card-content">
+
+                        <h2>
+                            Apple
+                        </h2>
+
+                        <p>
+                            Premium MacBook models offering
+                            performance, portability and design.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/laptops/?search=Apple"
+                    class="brand-view-button">
+
+                    View Apple Laptops →
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- NO RESULT -->
+
+        <div
+            class="brand-no-result"
+            id="brandNoResult">
+
+            <h2>
+                Brand Not Found
+            </h2>
+
+            <p>
+                We couldn't find a matching brand.
+                Try Dell, HP, Lenovo, Acer, ASUS or Apple.
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             INFORMATION SECTION
+        ================================= -->
+
+        <section class="brands-info-section">
+
+            <div class="brands-info-grid">
+
+
+                <div class="brands-info-content">
+
+                    <span class="section-label">
+                        QUALITY & VALUE
+                    </span>
+
+                    <h2>
+                        Trusted Brands.
+                        <span>Better Value.</span>
+                    </h2>
+
+                    <p>
+                        At Shubham Computers, we offer refurbished
+                        laptops from established brands so you can
+                        get reliable computing performance without
+                        paying the price of a brand-new device.
+                    </p>
+
+                    <p>
+                        Every available laptop can be checked for
+                        specifications, condition, pricing and
+                        warranty before purchase.
+                    </p>
+
+
+                    <div class="brand-points">
+
+                        <div class="brand-point">
+                            <span>✓</span>
+                            Quality Checked
+                        </div>
+
+                        <div class="brand-point">
+                            <span>✓</span>
+                            Tested Before Sale
+                        </div>
+
+                        <div class="brand-point">
+                            <span>✓</span>
+                            Affordable Prices
+                        </div>
+
+                        <div class="brand-point">
+                            <span>✓</span>
+                            Warranty Available
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="brands-info-visual">
+
+                    <div class="brands-info-visual-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Find Your Laptop
+                    </h3>
+
+                    <p>
+                        Choose a brand and explore our available
+                        refurbished laptops.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             CTA
+        ================================= -->
+
+        <section class="brands-cta">
+
+            <div>
+
+                <h2>
+                    Looking for a Specific Brand?
+                </h2>
+
+                <p>
+                    Tell us which laptop brand and model you need.
+                    We'll help you find the right option.
+                </p>
+
+            </div>
+
+
+            <div class="brands-cta-buttons">
+
+                <a
+                    href="/contact/"
+                    class="brands-cta-button brands-cta-contact">
+
+                    Contact Us →
+
+                </a>
+
+                <a
+                    href="https://wa.me/917572858187"
+                    target="_blank"
+                    class="brands-cta-button brands-cta-whatsapp">
+
+                    💬 WhatsApp Us
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+
+        <div class="footer-about">
+
+            <a href="/" class="logo footer-logo">
+
+                <span class="logo-icon">
+                    💻
+                </span>
+
+                <span>
+                    <strong>Shubham</strong>
+                    <small>Computers</small>
+                </span>
+
+            </a>
+
+            <p>
+                Quality refurbished laptops at affordable prices.
+                Tested, reliable and backed by support.
+            </p>
+
+            <p>
+                📍 Ahmedabad, Gujarat
+            </p>
+
+            <p>
+                📞 7572858187
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/laptops/">
+                Laptops
+            </a>
+
+            <a href="/brands/">
+                Brands
+            </a>
+
+            <a href="/services/">
+                Services
+            </a>
+
+            <a href="/about/">
+                About Us
+            </a>
+
+            <a href="/contact/">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Customer Support
+            </h3>
+
+            <a href="/sell-laptop/">
+                Sell / Exchange
+            </a>
+
+            <a href="/warranty/">
+                Warranty
+            </a>
+
+            <a href="/returns/">
+                Return Policy
+            </a>
+
+            <a href="/faq/">
+                FAQ
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Popular Brands
+            </h3>
+
+            <a href="/laptops/?search=Dell">
+                Dell
+            </a>
+
+            <a href="/laptops/?search=HP">
+                HP
+            </a>
+
+            <a href="/laptops/?search=Lenovo">
+                Lenovo
+            </a>
+
+            <a href="/laptops/?search=Acer">
+                Acer
+            </a>
+
+            <a href="/laptops/?search=ASUS">
+                ASUS
+            </a>
+
+            <a href="/laptops/?search=Apple">
+                Apple
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Shubham Computers.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+
+<a
+    href="https://wa.me/917572858187"
+    target="_blank"
+    class="whatsapp-float"
+    aria-label="Chat on WhatsApp">
+
+    💬
+
+</a>
+
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script>
+
+    /* MOBILE MENU */
+
+    function toggleMenu() {
+
+        const navbar =
+            document.querySelector(".navbar");
+
+        if (!navbar) {
+            return;
+        }
+
+        if (navbar.style.display === "flex") {
+
+            navbar.style.display = "";
+
+        } else {
+
+            navbar.style.display = "flex";
+
+            navbar.style.position = "absolute";
+
+            navbar.style.top = "76px";
+
+            navbar.style.left = "0";
+
+            navbar.style.right = "0";
+
+            navbar.style.flexDirection = "column";
+
+            navbar.style.alignItems = "flex-start";
+
+            navbar.style.padding = "20px 4%";
+
+            navbar.style.background = "#ffffff";
+
+            navbar.style.borderBottom =
+                "1px solid #e5e9f2";
+
+            navbar.style.boxShadow =
+                "0 10px 30px rgba(0,0,0,0.08)";
+        }
+    }
+
+
+    /* BRAND SEARCH */
+
+    function searchBrand() {
+
+        const input =
+            document.getElementById("brandSearch");
+
+        const searchValue =
+            input.value.trim().toLowerCase();
+
+        const cards =
+            document.querySelectorAll(
+                ".professional-brand-card"
+            );
+
+        const noResult =
+            document.getElementById(
+                "brandNoResult"
+            );
+
+        let found = false;
+
+
+        cards.forEach(function(card) {
+
+            const brand =
+                card.getAttribute("data-brand");
+
+            if (
+                searchValue === "" ||
+                brand.includes(searchValue)
+            ) {
+
+                card.style.display = "flex";
+
+                found = true;
+
+            } else {
+
+                card.style.display = "none";
+            }
+
+        });
+
+
+        if (noResult) {
+
+            if (found) {
+
+                noResult.style.display = "none";
+
+            } else {
+
+                noResult.style.display = "block";
+            }
+        }
+
+    }
+
+
+    /* SEARCH WHILE TYPING */
+
+    document
+        .getElementById("brandSearch")
+        .addEventListener(
+            "input",
+            searchBrand
+        );
+
+
+    /* ENTER KEY */
+
+    document
+        .getElementById("brandSearch")
+        .addEventListener(
+            "keypress",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchBrand();
+
+                }
+
+            }
+        );
+
+
+    /* MOBILE MENU CLOSE */
+
+    document
+        .querySelectorAll(".navbar a")
+        .forEach(function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    if (window.innerWidth <= 1000) {
+
+                        const navbar =
+                            document.querySelector(
+                                ".navbar"
+                            );
+
+                        if (navbar) {
+                            navbar.style.display = "";
+                        }
+
+                    }
+
+                }
+            );
+
+        });
+
+</script>
+
+
+</body>
+</html>
